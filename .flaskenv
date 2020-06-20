@@ -1,0 +1,2 @@
+FLASK_APP=taskapi
+FLASK_ENV=development
