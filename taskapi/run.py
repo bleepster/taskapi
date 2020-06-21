@@ -14,7 +14,6 @@ from flask import (
 
 bp = Blueprint("task", __name__, url_prefix="/task")
 
-
 @bp.route("/", methods=("POST",))
 def run():
     if request.method == "POST":
@@ -24,7 +23,7 @@ def run():
         if 'source' not in params or 'dest' not in params:
             return Response(status=404)
         with Connection(from_url(current_app.config["REDIS_URL"])):
-            command = ['/usr/bin/cmp', params['source'], params['dest']]
+            command = [current_app.config["COMMAND"], params["source"], params["dest"]]
             q = Queue()
             task = q.enqueue(work, command)
             if task is not None:

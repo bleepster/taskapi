@@ -8,6 +8,7 @@ class BaseConfig(object):
     WTF_CSRF_ENABLED = True
     REDIS_URL = f'redis://{redis_host}:{redis_port}/0'
     QUEUES = ["default"]
+    COMMAND = os.environ.get("COMMAND")
 
 class DevelopmentConfig(BaseConfig):
     WTF_CSRF_ENABLED = False
