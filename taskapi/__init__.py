@@ -1,6 +1,7 @@
 import os
 
 from flask import Flask
+
 from . import run
 from . import config
 
