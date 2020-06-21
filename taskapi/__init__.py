@@ -8,7 +8,7 @@ from . import config
 def create_app(test_config=None):
     app = Flask(__name__, instance_relative_config=True)
     app_config = config.BaseConfig
-    if os.environ.get("FLASK_ENV") == 'development':
+    if os.environ.get("FLASK_ENV") == "development":
         app_config = config.DevelopmentConfig
     app.config.from_object(app_config)
 

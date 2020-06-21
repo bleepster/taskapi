@@ -14,13 +14,14 @@ from flask import (
 
 bp = Blueprint("task", __name__, url_prefix="/task")
 
+
 @bp.route("/", methods=("POST",))
 def run():
     if request.method == "POST":
         if not request.is_json:
             return Response({}, status=404, mimetype="application/json")
         params = request.get_json()
-        if 'source' not in params or 'dest' not in params:
+        if "source" not in params or "dest" not in params:
             return Response(status=404)
         with Connection(from_url(current_app.config["REDIS_URL"])):
             command = [current_app.config["COMMAND"], params["source"], params["dest"]]

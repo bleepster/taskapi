@@ -1,8 +1,9 @@
 from subprocess import (
-        CalledProcessError,
-        run,
-        TimeoutExpired,
+    CalledProcessError,
+    run,
+    TimeoutExpired,
 )
+
 
 def do_work(command):
     try:
@@ -12,6 +13,7 @@ def do_work(command):
     except CalledProcessError:
         return False
     return True
+
 
 def work(command=None):
     if command is not None and isinstance(command, list) and len(command) > 0:
