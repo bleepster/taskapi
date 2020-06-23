@@ -42,7 +42,8 @@ Content-Type: application/json
 Date: Tue, 23 Jun 2020 08:51:39 GMT
 Server: Werkzeug/1.0.1 Python/3.8.3
 
-{                                                                                                                                                                                                                    "id": "68ca71e3-8efe-48a0-8aef-d8aabaa9a18d"
+{
+    "id": "68ca71e3-8efe-48a0-8aef-d8aabaa9a18d"
 }
 $ python -m python -m httpie --pretty=all http://localhost:8000/task/68ca71e3-8efe-48a0-8aef-d8aabaa9a18d
 HTTP/1.0 200 OK
@@ -53,7 +54,7 @@ Server: Werkzeug/1.0.1 Python/3.8.3
 
 {
     "id": "68ca71e3-8efe-48a0-8aef-d8aabaa9a18d",
-        "status": "SUCCESS"
+    "status": "SUCCESS"
 }
 ```
 
