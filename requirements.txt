@@ -3,3 +3,4 @@ python-dotenv==0.13.0
 black==19.10b0
 jedi==0.17.1
 pylint==2.5.3
+celery==4.4.5
