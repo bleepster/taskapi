@@ -2,14 +2,31 @@ import os
 
 from flask import Flask
 from . import run
+from . import config
+from .extensions import celery
+
+
+def make_celery(app):
+    Base = celery.Task
+    celery.conf.update(app.config)
+
+    class ContextTask(Base):
+        abstract = True
+
+        def __call__(self, *args, **kwargs):
+            with app.app_context():
+                return Base.__call__(*args, **kwargs)
+
+    celery.Task = ContextTask
+    return celery
 
 
 def create_app(test_config=None):
     app = Flask(__name__, instance_relative_config=True)
-    app.config.from_mapping(
-        SECRET_KEY="shhh...",
-        # DATABASE=
-    )
+    app_config = config.BaseConfig
+    if os.environ.get("FLASK_ENV") == "development":
+        app_config = config.DevelopmentConfig
+    app.config.from_object(app_config)
 
     if test_config is None:
         app.config.from_pyfile("config.py", silent=True)
