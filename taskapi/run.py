@@ -44,7 +44,8 @@ def get_task(task_id):
         if task is not None:
             tid = task.get_id()
             status = task.get_status()
-            return {"id": tid, "status": status}, 200
+            result = task.result
+            return {"id": tid, "status": status, "result": result}, 200
         else:
             return {}, 404
     return {}, 503
