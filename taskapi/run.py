@@ -37,5 +37,5 @@ def post_task():
 def get_task(task_id):
     result = celery.AsyncResult(task_id)
     if result:
-        return {"id": result.task_id, "status": result.status}, 200
+        return {"id": result.task_id, "status": result.status, "result": result.get() }, 200
     return {}, 503

@@ -12,7 +12,7 @@ Small api for running tasks in the background
    - at the time of writing, app as tested using Python 3.8.3
 2. `python -m venv .venv`
 3. `source .venv/bin/acrivate`
-4. `python -m pip install --upgrade pip && python -m pip install -r requirements.txt`
+4. `python -m pip install --upgrade pip && python -m pip install -r requirements-dev.txt`
 
 ## Sample .env file
 
@@ -58,3 +58,7 @@ Server: Werkzeug/1.0.1 Python/3.8.3
 }
 ```
 
+## Testing using the script in scripts directory
+
+1. `cd scripts`
+2. `./run_tasks.py --host=localhost --port=8000`
